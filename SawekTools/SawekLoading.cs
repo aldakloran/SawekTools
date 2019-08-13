@@ -7,7 +7,7 @@ using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace SawekTools {
-    public class Loading : IDisposable {
+    public class SawekLoading : IDisposable {
         private readonly string ID = DateTime.Now.Ticks.ToString();
         private const DispatcherPriority Priority = DispatcherPriority.Normal;
         private Window MainWindow;
@@ -17,7 +17,7 @@ namespace SawekTools {
         private int actualProgress;
         private bool infinity;
 
-        public Loading(int max = int.MaxValue, Window window = null) {
+        public SawekLoading(int max = int.MaxValue, Window window = null) {
             Application.Current.Dispatcher?.Invoke(Priority, new Action(() => {
                 MainWindow = window ?? Application.Current.MainWindow;
                 this.max = max > 0 ? max - 1 : 10;

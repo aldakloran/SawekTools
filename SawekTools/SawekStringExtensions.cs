@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 
 namespace SawekTools {
-    public static class StringExtensions {
+    public static class SawekStringExtensions {
         public static string RemoveDigits(this string key) {
             return Regex.Replace(key, @"\d", "");
         }

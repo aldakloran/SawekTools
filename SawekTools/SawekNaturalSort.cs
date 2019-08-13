@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 
 namespace SawekTools {
-    public class NaturalSort : IComparer, IComparer<string> {
+    public class SawekNaturalSort : IComparer, IComparer<string> {
         #region Variables
 
         [DllImport("shlwapi.dll", CharSet = CharSet.Unicode, ExactSpelling = true)]
@@ -20,17 +20,17 @@ namespace SawekTools {
 
         #region Constructors
 
-        public NaturalSort() {
+        public SawekNaturalSort() {
             _direction = ListSortDirection.Ascending;
             _SortMemberPath = new List<string>();
         }
 
-        public NaturalSort(ListSortDirection direction) {
+        public SawekNaturalSort(ListSortDirection direction) {
             _direction = direction;
             _SortMemberPath = new List<string>();
         }
 
-        public NaturalSort(ListSortDirection direction, params string[] SortMemberPath) {
+        public SawekNaturalSort(ListSortDirection direction, params string[] SortMemberPath) {
             _direction = direction;
             _SortMemberPath = SortMemberPath.ToList();
         }

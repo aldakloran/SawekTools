@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Threading;
 
 namespace SawekTools {
-    public static class ListControl {
+    public static class SawekListControl {
         private const DispatcherPriority TaskPriority = DispatcherPriority.Background;
         private static readonly object LockMe = new object();
         private static Task StopTask;

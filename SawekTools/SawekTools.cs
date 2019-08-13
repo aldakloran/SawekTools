@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Media;
 
 namespace SawekTools {
-    public static class Tools {
+    public static class SawekTools {
         public static IEnumerable<T> FindInWindowLogical<T>(this DependencyObject depObj) where T : DependencyObject {
             if (depObj == null) yield break;
 
