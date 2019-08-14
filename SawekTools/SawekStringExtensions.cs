@@ -77,7 +77,8 @@ namespace SawekTools {
             if (!string.IsNullOrEmpty(value)) {
                 var arr = value.ToCharArray();
 
-                return arr.Where(item => char.IsNumber(item) || item == '.' || item == ',' || item == '-').Aggregate<char, string>(null, (current, item) => current + item);
+                return arr.Where(item => char.IsNumber(item) || item == '.' || item == ',' || item == '-')
+                          .Aggregate<char, string>(null, (current, item) => current + item);
             }
 
             return value;
@@ -146,6 +147,12 @@ namespace SawekTools {
             }
 
             return result;
+        }
+
+        public static string StringTrunc(this string str, int maxLength) {
+            if (string.IsNullOrEmpty(str))
+                return str;
+            return str.Substring(0, Math.Min(str.Length, maxLength));
         }
 
         #region StringExtensions encryption
