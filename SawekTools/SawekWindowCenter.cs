@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -46,7 +47,7 @@ namespace SawekTools {
         }
 
         private void ReCenter(object se = null, EventArgs ev = null) {
-            Console.WriteLine(@"---# Move window to center");
+            Debug.WriteLine(@"---# Move window to center");
             _window.Dispatcher?.Invoke(() => {
                 _window.Left = Owner.Left + ((Owner.Width - _window.Width) / 2);
                 _window.Top  = Owner.Top + ((Owner.Height - _window.Height) / 2);

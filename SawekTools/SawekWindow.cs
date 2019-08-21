@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows;
 
 namespace SawekTools {
@@ -39,7 +40,7 @@ namespace SawekTools {
         }
 
         public static T OpenOne<T>() where T : Window {
-            Console.WriteLine($@"-----------------=============#### Open window: {typeof(T).Name} ####=============-----------------");
+            Debug.WriteLine($@"-----------------=============#### Open window: {typeof(T).Name} ####=============-----------------");
             foreach (object item in AllWindows) {
                 if (!(item is T one)) continue;
 
@@ -58,7 +59,7 @@ namespace SawekTools {
         }
 
         public static T OpenOne<T>(params object[] args) where T : Window {
-            Console.WriteLine($@"-----------------=============#### Open window: {typeof(T).Name} ####=============-----------------");
+            Debug.WriteLine($@"-----------------=============#### Open window: {typeof(T).Name} ####=============-----------------");
             foreach (object item in AllWindows) {
                 if (!(item is T one)) continue;
 
@@ -78,7 +79,7 @@ namespace SawekTools {
         }
 
         public static T OpenOne<T>(Window owner) where T : Window {
-            Console.WriteLine($@"-----------------=============#### Open window: {typeof(T).Name} ####=============-----------------");
+            Debug.WriteLine($@"-----------------=============#### Open window: {typeof(T).Name} ####=============-----------------");
             foreach (object item in AllWindows) {
                 if (!(item is T one)) continue;
 
@@ -97,7 +98,7 @@ namespace SawekTools {
         }
 
         public static T OpenOne<T>(Window owner, params object[] args) where T : Window {
-            Console.WriteLine($@"-----------------=============#### Open window: {typeof(T).Name} ####=============-----------------");
+            Debug.WriteLine($@"-----------------=============#### Open window: {typeof(T).Name} ####=============-----------------");
             foreach (object item in AllWindows) {
                 if (!(item is T one)) continue;
 

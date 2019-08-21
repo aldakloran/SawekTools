@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Timers;
 using System.Windows;
@@ -38,12 +39,12 @@ namespace SawekTools {
                 Application.Current.Dispatcher?.Invoke(Priority, new Action(() => {
                     if (loadingGrid == null) return;
 
-                    Console.WriteLine(@"Show loading screen");
+                    Debug.WriteLine(@"Show loading screen");
                     loadingGrid.Visibility = Visibility.Visible;
                 }));
             }
             catch (Exception ex) {
-                Console.WriteLine(ex.Message);
+                Debug.WriteLine(ex.Message);
             }
         }
 
@@ -62,7 +63,7 @@ namespace SawekTools {
                 }));
             }
             catch (Exception ex) {
-                Console.WriteLine(ex.Message);
+                Debug.WriteLine(ex.Message);
             }
         }
 
@@ -74,7 +75,7 @@ namespace SawekTools {
                 Application.Current.Dispatcher?.Invoke(Priority, new Action(() => SetValue(actualProgress)));
             }
             catch (Exception ex) {
-                Console.WriteLine(ex.Message);
+                Debug.WriteLine(ex.Message);
             }
         }
 
@@ -83,14 +84,19 @@ namespace SawekTools {
                 if (MainWindow == null) return;
 
                 Application.Current.Dispatcher?.Invoke(Priority, new Action(() => {
-                    if (value < max)
-                        loadingBar.Value = value;
-                    else
-                        Close();
+                    try {
+                        if (value < max)
+                            loadingBar.Value = value;
+                        else
+                            Close();
+                    }
+                    catch {
+                        //ignore
+                    }
                 }));
             }
             catch (Exception ex) {
-                Console.WriteLine(ex.Message);
+                Debug.WriteLine(ex.Message);
             }
         }
 
@@ -122,14 +128,14 @@ namespace SawekTools {
                 innerGrid.Children.Add(progress);
                 newGrid.Children.Add(innerGrid);
 
-                Console.WriteLine(@"Add loading controls to window");
+                Debug.WriteLine(@"Add loading controls to window");
                 MainWindow.FindInWindow<Grid>().FirstOrDefault()?.Children.Add(newGrid);
 
                 loadingGrid = newGrid;
                 loadingBar = progress;
             }
             catch (Exception ex) {
-                Console.WriteLine(ex.Message);
+                Debug.WriteLine(ex.Message);
             }
         }
 
@@ -137,7 +143,7 @@ namespace SawekTools {
             try {
                 if (MainWindow == null) return;
 
-                Console.WriteLine(@"Closing loading screen");
+                Debug.WriteLine(@"Closing loading screen");
                 Application.Current.Dispatcher?.Invoke(Priority, new Action(() => {
                     MainWindow.FindInWindow<Grid>().FirstOrDefault()?.Children.Remove(loadingGrid);
 
@@ -149,7 +155,7 @@ namespace SawekTools {
                 }));
             }
             catch (Exception ex) {
-                Console.WriteLine(ex.Message);
+                Debug.WriteLine(ex.Message);
             }
         }
 

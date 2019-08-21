@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -106,7 +107,7 @@ namespace SawekTools {
 
                                 break;
                             default:
-                                Console.WriteLine(@"Inny typ");
+                                Debug.WriteLine(@"Inny typ");
                                 try {
                                     object new_val = Convert.ChangeType(val, field.PropertyType);
                                     field.SetValue(new_object, new_val);
@@ -222,7 +223,7 @@ namespace SawekTools {
 
                                 break;
                             default:
-                                Console.WriteLine(@"Inny typ");
+                                Debug.WriteLine(@"Inny typ");
                                 try {
                                     object new_val = Convert.ChangeType(val, field.FieldType);
                                     field.SetValueDirect(reference, new_val);
