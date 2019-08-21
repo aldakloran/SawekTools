@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SawekListControl.cs" />
+    <Compile Include="SawekCollectionExtensions.cs" />
     <Compile Include="SawekLoading.cs" />
     <Compile Include="SawekNaturalSort.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

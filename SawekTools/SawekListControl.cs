@@ -13,6 +13,7 @@ namespace SawekTools {
         private const DispatcherPriority TaskPriority = DispatcherPriority.Background;
         private static readonly object LockMe = new object();
         private static Task StopTask;
+        public static bool IsWorking => OperationsList.Any(x => x.Status == DispatcherOperationStatus.Executing || x.Status == DispatcherOperationStatus.Pending);
 
         public static void Cancel() {
             StopTask = Task.Factory.StartNew(() => OperationsList.ForEach(x => x?.Abort()));
