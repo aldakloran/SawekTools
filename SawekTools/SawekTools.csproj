@@ -51,6 +51,7 @@
     <Compile Include="SawekNaturalSort.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SawekClipboard.cs" />
+    <Compile Include="SawekObjectExtensions.cs" />
     <Compile Include="SawekWindow.cs" />
     <Compile Include="SawekWindowCenter.cs" />
     <Compile Include="SawekStringExtensions.cs" />

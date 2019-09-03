@@ -16,6 +16,7 @@ namespace SawekTools {
             if (init != null) {
                 _window.Loaded += (se, ev) => {
                     Owner.LocationChanged += ReCenter;
+                    Owner.SizeChanged     += ReCenter;
                     Owner.PreviewKeyDown  += Escape_close;
                 };
                 init.ContinueWith((x) => ReCenter());
@@ -23,6 +24,7 @@ namespace SawekTools {
             else {
                 _window.Loaded += (se, ev) => {
                     Owner.LocationChanged += ReCenter;
+                    Owner.SizeChanged     += ReCenter;
                     Owner.PreviewKeyDown  += Escape_close;
                     ReCenter();
                 };
@@ -30,10 +32,11 @@ namespace SawekTools {
 
             _window.Closed += (se, ev) => {
                 Owner.LocationChanged -= ReCenter;
+                Owner.SizeChanged     -= ReCenter;
                 Owner.PreviewKeyDown  -= Escape_close;
             };
-            _window.SizeChanged += ReCenter;
-
+            _window.SizeChanged    += ReCenter;
+            _window.SizeChanged    += ReCenter;
             _window.PreviewKeyDown += Escape_close;
 
             window.Focus();
@@ -49,8 +52,20 @@ namespace SawekTools {
         private void ReCenter(object se = null, EventArgs ev = null) {
             Debug.WriteLine(@"---# Move window to center");
             _window.Dispatcher?.Invoke(() => {
-                _window.Left = Owner.Left + ((Owner.Width - _window.Width) / 2);
-                _window.Top  = Owner.Top + ((Owner.Height - _window.Height) / 2);
+                switch (_window.WindowState) {
+                    case WindowState.Normal:
+                        _window.Left = Owner.Left + ((Owner.Width - _window.Width) / 2);
+                        _window.Top  = Owner.Top + ((Owner.Height - _window.Height) / 2);
+                        break;
+                    case WindowState.Maximized:
+                        _window.Left = ((Owner.Width - _window.Width) / 2);
+                        _window.Top  = ((Owner.Height - _window.Height) / 2);
+                        break;
+                    case WindowState.Minimized:
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
 
                 if (_window.Visibility == Visibility.Collapsed)
                     _window.Visibility = Visibility.Visible;
